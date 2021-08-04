@@ -27,4 +27,13 @@ public class ItemService {
     public Item findOne(Long itemId) {
         return itemRepository.findOne(itemId);
     }
+
+    //변경감지
+    @Transactional
+    public void updateForm(Long itemId, String name, int price, int stockQunatity) {
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQunatity);
+    }
 }
