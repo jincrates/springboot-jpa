@@ -8,11 +8,13 @@ import com.jincrates.springbootjpa.domain.item.Item;
 import com.jincrates.springbootjpa.repository.ItemRepository;
 import com.jincrates.springbootjpa.repository.MemberRepository;
 import com.jincrates.springbootjpa.repository.OrderRepository;
+import com.jincrates.springbootjpa.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -63,9 +65,7 @@ public class OrderService {
     /**
      * 검색
      */
-/*
-    public List<Order> findOrders(OrderSearh orderSearh) {
-        return orderRepository.findAll(orderSearh);
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByString(orderSearch);
     }
-*/
 }

@@ -35,5 +35,8 @@ public class ItemService {
         findItem.setName(name);
         findItem.setPrice(price);
         findItem.setStockQuantity(stockQunatity);
+
+        //실무에선 setter를 쓰지말고 추적 메서드를 만들기
+        //findItem.change(name, price, stockQuantity);  //이런식으로라도 만들기
     }
 }

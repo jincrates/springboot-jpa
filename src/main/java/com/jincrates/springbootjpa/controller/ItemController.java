@@ -65,9 +65,9 @@ public class ItemController {
         return "items/updateItemForm";
     }
 
+/*
     @PostMapping("/items/{itemId}/edit")
     public String updateItemForm(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
-        //id를 넘기는 것이 보안에 취약하기 때문에 권한 체크하는 로직을 넣기도함
         Book book = new Book();
         book.setId(form.getId());
         book.setName(form.getName());
@@ -79,10 +79,12 @@ public class ItemController {
         itemService.saveItem(book);
         return "redirect:/items";
     }
+*/
 
     //merge가 아닌 변경감지로. 파라미터가 많으면 Dto로 뽑아내자
     @PostMapping("/items/{itemId}/edit")
     public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
+        //id를 넘기는 것이 보안에 취약하기 때문에 권한 체크하는 로직을 넣기도함
         itemService.updateForm(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
 
         return "redirect:/items";
